@@ -27,6 +27,9 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "Movement")
     bool bIsSprinting = false;
 
+    double LastFootstepTime = -100.;
+    FVector LastFootstepLocation = FVector::ZeroVector;
+
 protected:
     virtual void BeginPlay() override;
 
