@@ -26,6 +26,14 @@ void Aaaiakovlev::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+    const double Now = GetWorld()->GetTimeSeconds();
+    if (bIsSprinting && GetCharacterMovement()->IsMovingOnGround()
+        && GetVelocity().SizeSquared2D() > FMath::Square(120.f) && Now - LastFootstepTime >= 0.45)
+    {
+        LastFootstepLocation = GetActorLocation();
+        LastFootstepTime = Now;
+    }
+
 }
 
 // Called to bind functionality to input
